@@ -1,0 +1,80 @@
+// Jessica Dever
+// 6/26/20
+// Nested Structures 11-5 Gaddis 
+#include <iostream>
+#include <string>
+using namespace std;
+
+// date structure holds date info
+struct Date
+{
+  int month;
+  int day;
+  int year;
+};
+
+// Place structure holds an address
+struct Place
+{
+  string address;
+  string city;
+  string state;
+  string zip;
+};
+
+// EmployeeInfo holds the employee's data
+struct EmployeeInfo
+{
+  string name;
+  int employeeNumber;
+  Date birthDate; // nested structure 
+  Place residence; // nested structure
+};
+
+int main() 
+{
+//define a structure variable that holds information about the manager
+EmployeeInfo manager;
+
+// get the manager's name and employee number
+cout << "Enter the manager's name: ";
+getline (cin, manager.name);
+cout << "Enter the manager's employee number: ";
+cin >> manager.employeeNumber;
+
+// get birth date
+cout << "Enter the manager's date of birth. \n";
+cout << "Month (up to 2 digits) :";
+cin >> manager.birthDate.month;
+cout << "Day (up to 2 digits) :";
+cin >> manager.birthDate.day;
+cout << "Year (e.g nnnn) :";
+cin >> manager.birthDate.year;
+cin.ignore(); //skips newline character
+
+// get manager's residence information
+cout << "Enter the manger's street address: ";
+getline(cin, manager.residence.address);
+cout << "City: ";
+getline(cin, manager.residence.city);
+cout << "State: ";
+getline(cin, manager.residence.state);
+cout << "Zip Code: ";
+getline(cin, manager.residence.zip);
+
+// display all the information entered
+cout << "\nManager Information and demographics: \n\n";
+cout << manager.name << "\n";
+cout << "Employee Number: " << manager.employeeNumber << "\n";
+cout << "Date of Birth: ";
+cout << manager.birthDate.month << "-";
+cout << manager.birthDate.day << "-";
+cout << manager.birthDate.year << "\n";
+cout << "\nResidence Address: " << "\n";
+cout << manager.residence.address <<"\n";
+cout << manager.residence.city << ", ";
+cout << manager.residence.state <<" ";
+cout << manager.residence.zip << "\n";
+
+return 0;
+}
